@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-// import Search from './components/Search'
-import Dashboard from './components/Dashboard'
-
+import Layout from './components/Layout'
+// import ChartStock from './components/ChartStock'
+// import IntegrationDownshift from './components/AutoSearch'
 
 function App() {
   return (
     <div className="App">
-      <Dashboard />
+      <Layout />
     </div>
   );
 }
