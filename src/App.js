@@ -1,13 +1,16 @@
 import React from 'react';
 import './App.css';
-import Layout from './components/Layout'
-// import ChartStock from './components/ChartStock'
+
+import Layout from './components/layout/Layout'
+// import CandleChart from './components/charting/ChartHighStock'
 // import IntegrationDownshift from './components/AutoSearch'
+// import Dashboard from './components/content/DashBoard'
 
 function App() {
   return (
     <div className="App">
       <Layout />
+      {/* <Dashboard/> */}
     </div>
   );
 }

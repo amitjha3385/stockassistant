@@ -11,7 +11,7 @@ import axios from 'axios';
 
 const companies = [];
 
-axios.get('http://localhost:3004/companies')
+axios.get('http://localhost:3004/companylist')
 .then(res => {
    res.data.forEach(company => {
      companies.push(company)
@@ -55,19 +55,19 @@ renderInput.propTypes = {
 function renderSuggestion(suggestionProps) {
   const { suggestion, index, itemProps, highlightedIndex, selectedItem } = suggestionProps;
   const isHighlighted = highlightedIndex === index;
-  const isSelected = (selectedItem || '').indexOf(suggestion.Name) > -1;
+  const isSelected = (selectedItem || '').indexOf(suggestion.name) > -1;
 
   return (
     <MenuItem
       {...itemProps}
-      key={suggestion.Name}
+      key={suggestion.name}
       selected={isHighlighted}
       component="div"
       style={{
         fontWeight: isSelected ? 500 : 400,
       }}
     >
-      {suggestion.Name}
+      {suggestion.name}
     </MenuItem>
   );
 }
@@ -78,7 +78,7 @@ renderSuggestion.propTypes = {
   itemProps: PropTypes.object.isRequired,
   selectedItem: PropTypes.string.isRequired,
   suggestion: PropTypes.shape({
-    label: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
   }).isRequired,
 };
 
@@ -91,7 +91,7 @@ function getSuggestions(value, { showEmpty = false } = {}) {
     ? []
     : companies.filter(company => {
         const keep =
-          count < 10 && (company.Symbol.slice(0, inputLength).toLowerCase() === inputValue ||company.Name.slice(0, inputLength).toLowerCase() === inputValue );
+          count < 10 && (company.symbol.slice(0, inputLength).toLowerCase() === inputValue ||company.name.slice(0, inputLength).toLowerCase() === inputValue );
 
         if (keep) {
           count += 1;
@@ -187,7 +187,7 @@ export default function IntegrationDownshift() {
                         renderSuggestion({
                           suggestion,
                           index,
-                          itemProps: getItemProps({ item: suggestion.Name }),
+                          itemProps: getItemProps({ item: suggestion.name }),
                           highlightedIndex,
                           selectedItem,
                         }),

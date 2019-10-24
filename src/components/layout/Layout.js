@@ -13,8 +13,14 @@ import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+
+
 import { mainListItems, secondaryListItems } from './listItems';
 import IntegrationDownshift from './AutoSearch'
+import CandleChart from '../charting/ChartHighStock'
 
 
 
@@ -100,7 +106,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Dashboard() {
+export default function Layout() {
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -160,6 +167,19 @@ export default function Dashboard() {
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
+      <main className={classes.content}>
+            <div className={classes.appBarSpacer} />
+            <Container maxWidth="lg" className={classes.container}>
+                <Grid container spacing={3}>
+                {/* Recent Orders */}
+                  <Grid item xs={12}>
+                    <Paper className={classes.paper}>
+                      <CandleChart symbol="SBIN"/>
+                    </Paper>
+                  </Grid>
+                </Grid>
+            </Container>
+      </main>
     </div>
   );
 }
