@@ -20,8 +20,7 @@ axios.get('http://localhost:3004/companylist')
 
 
 function renderInput(inputProps) {
-  const { InputProps, classes, ref, ...other } = inputProps;
-
+  const { InputProps, classes, ...other } = inputProps;
   return (
     <TextField
         id="outlined-search"
@@ -32,7 +31,6 @@ function renderInput(inputProps) {
         disableunderline= 'true'
         fullWidth
         InputProps={{
-          inputRef: ref,
           classes: {
             root: classes.inputRoot,
             input: classes.inputInput,
@@ -105,7 +103,7 @@ function getSuggestions(value, { showEmpty = false } = {}) {
 const useStyles = makeStyles(theme => ({
   paper: {
     position: 'absolute',
-    zIndex: 1,
+    zIndex: 5,
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: '100%',
@@ -150,12 +148,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function IntegrationDownshift() {
+export default function SearchBar(props) {
   const classes = useStyles();
-
+  const { onUpdateSymbol} = props;
   return (
     <div>
-      <Downshift id="downshift-simple">
+      <Downshift onChange={selection => {
+        let c = companies.filter(company => {return company.name === selection});
+        onUpdateSymbol(c[0].symbol);
+      }}>
         {({
           getInputProps,
           getItemProps,
