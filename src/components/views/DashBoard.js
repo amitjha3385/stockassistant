@@ -28,7 +28,7 @@ function Copyright() {
 let theme = createMuiTheme({
   palette: {
     primary: {
-      main: blueGrey[700],
+      main: blueGrey[400],
     },
   },
   typography: {
@@ -66,7 +66,7 @@ const styles = {
   },
   main: {
     flex: 1,
-    padding: theme.spacing(6, 4),
+    padding: theme.spacing(1,2),
     background: '#fcfcfc',
   },
   footer: {

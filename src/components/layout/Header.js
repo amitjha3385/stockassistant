@@ -8,6 +8,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
 
 
 const lightColor = 'rgba(255, 255, 255, 0.7)';
@@ -34,7 +36,8 @@ const styles = theme => ({
   },
 });
 
-function Header () {
+function Header (props) {
+  const { classes } = props;
   return (
     <React.Fragment>
       <AppBar color="primary" position="sticky" elevation={0}>
@@ -54,6 +57,20 @@ function Header () {
             </Grid>
           </Grid>
         </Toolbar>
+      </AppBar>
+      <AppBar
+        component="div"
+        className={classes.secondaryBar}
+        color="primary"
+        position="static"
+        elevation={0}
+      >
+          <Tabs value={0} textColor="inherit">
+          <Tab textColor="inherit" label="Research" />
+          <Tab textColor="inherit" label="Reports" />
+          <Tab textColor="inherit" label="Back Test" />
+          <Tab textColor="inherit" label="Live Trade" />
+        </Tabs>
       </AppBar>
     </React.Fragment>
   );

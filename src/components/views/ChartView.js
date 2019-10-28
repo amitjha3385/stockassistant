@@ -73,13 +73,13 @@ function ChartView() {
   
   return (
       <div>
-                < SearchBar 
-                  onUpdateSymbol = {updateSymbol}
-                />
-                <CandleChart  
-                  chartOption = {chartOptions}
-                  toRenderChart = {renderChart}
-                />
+          < SearchBar 
+            onUpdateSymbol = {updateSymbol}
+          />
+          <CandleChart  
+            chartOption = {chartOptions}
+            toRenderChart = {renderChart}
+          />
     </div>
   );
 }
