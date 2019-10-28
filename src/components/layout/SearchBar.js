@@ -6,17 +6,12 @@ import { makeStyles, fade } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
-import axios from 'axios';
 
 
-const companies = [];
+import searchSuggestions from './searchSuggestions'
 
-axios.get('http://localhost:3004/companylist')
-.then(res => {
-   res.data.forEach(company => {
-     companies.push(company)
-   });})
-.catch(err => console.log(err));
+
+const companies = searchSuggestions.companylist
 
 
 function renderInput(inputProps) {
