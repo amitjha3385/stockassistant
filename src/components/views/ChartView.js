@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import CandleChart from '../charting/CandleChart';
 import SearchBar from '../layout/SearchBar'
-import changeSymbol from '../../reduxfiles/actions/chartViewActions';
+import StockToolbar from '../layout/StockToolbar'
+import changeSymbol from '../../reduxfiles/actions/chartView/chartViewActions';
 
 
 function ChartView(props) {
@@ -11,6 +12,7 @@ function ChartView(props) {
   var renderChart = (chartSymbol === '')?false:true
   return (
       <div>
+          < StockToolbar />
           < SearchBar 
             onUpdateSymbol = {changeSymbol}
           />

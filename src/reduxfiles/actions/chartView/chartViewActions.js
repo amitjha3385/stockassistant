@@ -1,5 +1,5 @@
 import axios from 'axios';
-import CHANGE_SYMBOL from './types'
+import CHANGE_SYMBOL from '../types'
 
 
 const changeSymbol = (symbol) => dispatch => {
