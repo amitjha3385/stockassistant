@@ -145,7 +145,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function SearchBar(props) {
   const classes = useStyles();
-  const { onUpdateSymbol} = props;
+  const {onUpdateSymbol} = props;
   return (
     <div>
       <Downshift onChange={selection => {

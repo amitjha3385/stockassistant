@@ -2,6 +2,8 @@ import React from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 
+// import store from '../../reduxfiles/store'
+
 // import Indicators from "highcharts/indicators/indicators-all.js";
 // import DragPanes from "highcharts/modules/drag-panes.js";
 // import AnnotationsAdvanced from "highcharts/modules/annotations-advanced.js";
@@ -20,18 +22,20 @@ import "./style.css";
 // FullScreen(Highcharts);
 // StockTools(Highcharts);
 
-
 export default function CandleChart(props) {
     const { chartOption, toRenderChart } = props;
+    
     if(!toRenderChart) {
       return null;
     }
+
+    console.log({...chartOption});
     return (
       <div>
       <HighchartsReact
         highcharts={Highcharts}
         constructorType={"stockChart"}
-        options={chartOption}
+        options={{...chartOption}}
       />
     </div>
     )}            
