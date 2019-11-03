@@ -2,19 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import CandleChart from '../charting/CandleChart';
-import SearchBar from '../layout/SearchBar'
-import StockToolbar from '../layout/StockToolbar'
-import changeSymbol from '../../reduxfiles/actions/chartView/chartViewActions';
+import ChartPrimaryToolbar from '../charting/ChartPrimaryToolbar'
+import changeSymbol from '../../reduxfiles/actions/chartView/changeSymbol';
+import changeTimeline from '../../reduxfiles/actions/chartView/changeTimeline';
+import addIndicator from '../../reduxfiles/actions/chartView/addIndicator';
 
 
 function ChartView(props) {
-  const { chartSymbol, chartOptions, changeSymbol} = props;
-  var renderChart = (chartSymbol === '')?false:true
+  const {chartOptions, changeSymbol, changeTimeline, addIndicator, timeline, symbol, activeSeries} = props;
+  var renderChart = (symbol === '') ? false : true;
   return (
       <div>
-          < StockToolbar />
-          < SearchBar 
+          < ChartPrimaryToolbar 
             onUpdateSymbol = {changeSymbol}
+            onChangeTimeline = {changeTimeline}
+            onAddIndicator = {addIndicator}
+            timeline = {timeline}
+            symbol = {symbol}
+            activeSeries = {activeSeries}
           />
           <CandleChart  
             chartOption = {chartOptions}
@@ -25,12 +30,16 @@ function ChartView(props) {
 }
 
 const mapStateToProps = state => ({
-  chartSymbol: state.chartViewReducer.symbol,
-  chartOptions: state.chartViewReducer.chartOptions
+  chartOptions: state.chartViewReducer.chartOptions,
+  timeline: state.chartViewReducer.timeline,
+  symbol: state.chartViewReducer.symbol,
+  activeSeries: state.chartViewReducer.activeSeries
 })
 
 const mapDispatchToProps = {
-  changeSymbol
+  changeSymbol,
+  changeTimeline,
+  addIndicator,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChartView);

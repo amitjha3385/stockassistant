@@ -1,5 +1,20 @@
 const initialState = {
         symbol: '',
+        timeline: 'D', 
+        activeSeries: [{
+            type: "candlestick",
+            name: '',
+            data: [],
+            visible:true
+        },
+        {
+            type: "column",
+            name: "Volume",
+            data: [],
+            yAxis: 1,
+            visible:true
+        }],
+        
         chartOptions: {
                 plotOptions: {
                 candlestick: {
@@ -10,9 +25,19 @@ const initialState = {
                     color: '#66ccff', 
                 }
                 },
+                navigator:{
+                    adaptToUpdatedData: false
+                },
+
                 chart: {
-                height: 600,
+                height: (3/8 * 100) + '%',
                 animation: false
+                },
+
+                stockTools: {
+                    gui: {
+                        enabled: false // disable the built-in toolbar
+                    }
                 },
                 
                 rangeSelector: {
@@ -55,27 +80,24 @@ const initialState = {
                     }
                 }
                 ],
-                
+
                 tooltip: {
                 split: true
                 },
-                
                 series: [
                 {
                     type: "candlestick",
                     name: '',
                     data: [],
-                    visible:true
                 },
                 {
                     type: "column",
                     name: "Volume",
                     data: [],
                     yAxis: 1,
-                    visible:true
                 }
-                ]
-                }
+                ],
+            }   
 };
 
 export default initialState;
