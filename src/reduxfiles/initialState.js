@@ -30,7 +30,7 @@ const initialState = {
                 },
 
                 chart: {
-                height: (3/8 * 100) + '%',
+                height: (5/11 * 100) + '%',
                 animation: false
                 },
 

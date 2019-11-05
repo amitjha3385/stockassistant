@@ -6,18 +6,26 @@ const addIndicator = createAction('ChartView/highstock/addIndicator', function p
     payload: {
           seriesInfo: {
             type: 'sma',
-            linkedTo: 'primary',
+            linkedTo: 'secondary',
             params: {
-                period: 14
-            }
+                period: 30
+            },
+            marker: {
+              enabled: false
+          },
+          yAxis: 1,
           },
 
           seriesChartOption: {
             type: 'sma',
-            linkedTo: 'primary',
+            linkedTo: 'secondary',
             params: {
-                period: 14
-            }
+                period: 30
+            },
+            marker: {
+              enabled: false
+          },
+          yAxis: 1,
           }
 }}});
 

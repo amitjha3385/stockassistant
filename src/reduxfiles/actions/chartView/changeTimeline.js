@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { CHANGE_TIMELINE } from '../types';
+import { CHANGE_TIMELINE, CLEAR_SERIES_DATA } from '../types';
 import getUrl from '../../helperfunctions/getUrl';
 import { ohlcDataHS, volumeDataHS } from '../../helperfunctions/getDataHS';
 import getRangeSelectorHS from '../../helperfunctions/getRangeSelectorHS';
-import {getAllSeries, getAllSeriesdummy} from '../../helperfunctions/getAllSeries';
+import {getAllSeries, getEmptySeries} from '../../helperfunctions/getAllSeries';
 
 
 function changeTimelinePaylod(allSeries, candle, volume, rangeSelected, newTimeline, symbol){
@@ -17,13 +17,13 @@ function changeTimelinePaylod(allSeries, candle, volume, rangeSelected, newTimel
 
 
 const changeTimeline = (newTimeline, symbol, activeSeries) => dispatch => {
+    dispatch({
+        type: CLEAR_SERIES_DATA,
+        payload: {'series': getEmptySeries(activeSeries, symbol)}
+    })
     
     let url =  getUrl(newTimeline, symbol);
     let rangeSelected = getRangeSelectorHS(newTimeline);
-    dispatch({
-        type: 'Dummy',
-        payload: {'series': getAllSeriesdummy(activeSeries)}
-    })
     axios.get(url)
     .then((res) => {
         let candle  = ohlcDataHS(res.data);

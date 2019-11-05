@@ -1,5 +1,5 @@
 export default function getRangeSelectorHS(timeline, symbol){
-    var selection = 1;
+    var selection = 2;
     if(timeline === 'W'){
         selection = 4;
     }

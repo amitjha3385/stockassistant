@@ -2,21 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import CandleChart from '../charting/CandleChart';
-import ChartPrimaryToolbar from '../charting/ChartPrimaryToolbar'
-import changeSymbol from '../../reduxfiles/actions/chartView/changeSymbol';
-import changeTimeline from '../../reduxfiles/actions/chartView/changeTimeline';
-import addIndicator from '../../reduxfiles/actions/chartView/addIndicator';
+import PrimaryToolbar from '../charting/PrimaryToolbar'
 
 
 function ChartView(props) {
-  const {chartOptions, changeSymbol, changeTimeline, addIndicator, timeline, symbol, activeSeries} = props;
+  const {chartOptions, timeline, symbol, activeSeries} = props;
   var renderChart = (symbol === '') ? false : true;
   return (
       <div>
-          < ChartPrimaryToolbar 
-            onUpdateSymbol = {changeSymbol}
-            onChangeTimeline = {changeTimeline}
-            onAddIndicator = {addIndicator}
+          < PrimaryToolbar 
             timeline = {timeline}
             symbol = {symbol}
             activeSeries = {activeSeries}
@@ -36,11 +30,7 @@ const mapStateToProps = state => ({
   activeSeries: state.chartViewReducer.activeSeries
 })
 
-const mapDispatchToProps = {
-  changeSymbol,
-  changeTimeline,
-  addIndicator,
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChartView);
+
+export default connect(mapStateToProps, null)(ChartView);
 

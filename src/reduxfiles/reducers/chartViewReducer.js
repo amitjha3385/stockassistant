@@ -4,7 +4,7 @@ import addIndicator from '../actions/chartView/addIndicator';
 
 
 const chartViewReducer = createReducer({chartViewReducer: {...initialState}}, {
-  'Dummy': (state, action) =>  {
+  'ChartView/ClearSeriesData': (state, action) =>  {
     state.chartOptions.series = action.payload.series;
   },
   'ChartView/changeSymbol': (state, action) =>  {

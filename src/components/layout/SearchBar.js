@@ -145,13 +145,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function SearchBar(props) {
   const classes = useStyles();
-  const {onUpdateSymbol, timeline, activeSeries} = props;
+  const {changeSymbol, timeline, activeSeries} = props;
   return (
     <div>
       <Downshift onChange={selection => {
         let c = companies.filter(company => {return company.name === selection});
-        if (c) {
-          onUpdateSymbol(c[0].symbol, timeline, activeSeries);
+        if (c[0]) {
+          changeSymbol(c[0].symbol, timeline, activeSeries);
         }
       }}>
         {({

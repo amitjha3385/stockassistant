@@ -33,13 +33,13 @@ function getAllSeries(candle, volume, symbol, allSeries) {
 }
 
 
-function getAllSeriesdummy(allSeries) {
+function getEmptySeries(allSeries, symbol) {
     var series = [];
     allSeries.forEach(ser => {
         if(ser.type === 'candlestick') {
             var primaryseries = {
                 type: "candlestick",
-                name: '',
+                name: `${symbol}`,
                 data: [],
                 id: 'primary',
                 dataGrouping: {
@@ -67,4 +67,4 @@ function getAllSeriesdummy(allSeries) {
     return series;
 }
 
-export {getAllSeries, getAllSeriesdummy}
+export {getAllSeries, getEmptySeries}
