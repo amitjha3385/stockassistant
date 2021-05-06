@@ -9,7 +9,7 @@
     "downshift": "^3.3.5",
     "echarts": "^4.4.0",
     "echarts-for-react": "^2.0.15-beta.1",
-    "highcharts": "^7.2.0",
+    "highcharts": "^9.0.0",
     "highcharts-react-official": "^2.2.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
